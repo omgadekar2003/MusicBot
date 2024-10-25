@@ -36,12 +36,14 @@
 # # Play video if video ID is found
 # if video_id:
 #     st.video(f"https://www.youtube.com/watch?v={video_id}")
-
-
+# app.py
 
 import streamlit as st
 import speech_recognition as sr
 import requests
+
+# Retrieve API key from Streamlit secrets
+api_key = st.secrets["YOUTUBE_API_KEY"]
 
 # Capture audio input
 audio_value = st.experimental_audio_input("Record a voice message")
@@ -67,10 +69,10 @@ if audio_value:
             st.write(f"Searching for {song_title}...")
             
             # Search on YouTube
-            api_key = 'API_key_1'
-            search_url = f"AIzaSyA4WqgO32cIvDv5IUfqG5ggV3Ej9dIUiFg={song_title}&type=video&key={api_key}"
+            search_url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={song_title}&type=video&key={api_key}"
             response = requests.get(search_url).json()
-            
+            st.write("API response:", response)  # Print full response for debugging
+
             # Check if 'items' exists in response
             if 'items' in response and len(response['items']) > 0:
                 video_id = response['items'][0]['id']['videoId']
