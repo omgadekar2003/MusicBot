@@ -67,8 +67,8 @@ if audio_value:
             st.write(f"Searching for {song_title}...")
             
             # Search on YouTube
-            api_key = 'YOUR_YOUTUBE_API_KEY'
-            search_url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={song_title}&type=video&key={api_key}"
+            api_key = 'API_key_1'
+            search_url = f"AIzaSyA4WqgO32cIvDv5IUfqG5ggV3Ej9dIUiFg={song_title}&type=video&key={api_key}"
             response = requests.get(search_url).json()
             
             # Check if 'items' exists in response
