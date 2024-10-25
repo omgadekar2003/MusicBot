@@ -110,7 +110,7 @@ st.markdown(
 
 # Display the main image
 st.markdown(
-    '<div class="header-image"><img src="https://files.oaiusercontent.com/file-w8B2xMcBgAqcOfiUhvlhjOwH?se=2024-10-25T16%3A18%3A10Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D288347e6-56ae-4819-b879-c16f1e078ab2.webp" alt="Main Image"></div>',
+    '<div class="header-image"><img src="https://github.com/omgadekar2003/MusicBot/blob/main/DALL%C2%B7E%202024-10-25%2021.55.46%20-%20A%20high-definition%20image%20of%20a%20young%20person%20with%20headphones%20on%2C%20sitting%20comfortably%20in%20a%20cozy%20room%20while%20listening%20to%20music%20through%20a%20music%20bot%20on%20a%20lap.webp" alt="Main Image"></div>',
     unsafe_allow_html=True
 )
 
