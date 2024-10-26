@@ -172,18 +172,23 @@ def get_spotify_token(client_id, client_secret):
         data={"grant_type": "client_credentials"},
         auth=HTTPBasicAuth(client_id, client_secret)
     )
-    return response.json().get("access_token")
+    token = response.json().get("access_token")
+    if token is None:
+        st.error("Failed to get Spotify token.")
+    return token
 
 # Spotify search function
 def search_spotify_song(song_title, token):
     search_url = f"https://api.spotify.com/v1/search?q={song_title}&type=track&limit=1"
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(search_url, headers=headers).json()
-    
+
     if 'tracks' in response and response['tracks']['items']:
         track = response['tracks']['items'][0]
-        print(f"Found track on Spotify: {track}")  # Debug print
-        return track.get('preview_url')  # Returns a 30-second preview URL
+        st.success(f"Found '{track['name']}' by {track['artists'][0]['name']} on Spotify!")
+        return track['preview_url']  # Returns a 30-second preview URL
+    else:
+        st.warning("Could not find the song on Spotify.")
     return None
 
 # Capture audio input
@@ -223,11 +228,6 @@ if audio_value:
             
             if not video_id and not spotify_preview_url:
                 st.error("Could not find the song on either YouTube or Spotify.")
-            else:
-                if spotify_preview_url:
-                    st.success(f"Playing {song_title} on Spotify!")
-                else:
-                    st.warning("Could not find the song on Spotify.")
     except sr.UnknownValueError:
         st.error("Sorry, I could not understand the audio.")
     except Exception as e:
