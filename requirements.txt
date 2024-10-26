@@ -4,10 +4,12 @@
 #requests
 #pydub
 
+# requirements.txt
+
 streamlit
 requests
 spotipy
 SpeechRecognition
 PyAudio
 sounddevice
-portaudio.h
+
