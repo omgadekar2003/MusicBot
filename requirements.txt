@@ -2,11 +2,12 @@
 #streamlit
 #SpeechRecognition
 #requests
-pydub
+#pydub
 
 streamlit
 requests
 spotipy
 SpeechRecognition
 PyAudio
+sounddevice
 
