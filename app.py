@@ -60,7 +60,7 @@ import requests
 st.set_page_config(page_title="OG's Music Bot", page_icon="🎵", layout="centered")
 
 # Add a title and subtitle
-st.title("🎶 Music Bot")
+st.title("🎶 OG's Music Bot")
 st.markdown("""
     Record your voice and let me play your favorite songs!
     Just say "play" followed by the song title.
