@@ -1,6 +1,12 @@
 # reqirements.txt
-streamlit
-SpeechRecognition
-requests
+#streamlit
+#SpeechRecognition
+#requests
 pydub
+
+streamlit
+requests
+spotipy
+SpeechRecognition
+PyAudio
 
