@@ -133,7 +133,9 @@
 #     '<div class="developer-credit">Developer: OM GADEKAR</div>',
 #     unsafe_allow_html=True
 # )
------
+
+
+#-----
 import streamlit as st
 import speech_recognition as sr
 import requests
@@ -244,7 +246,9 @@ st.markdown(
 )
 
 
-------
+#------
+
+
 # # app.py
 
 # import streamlit as st
