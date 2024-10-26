@@ -12,5 +12,5 @@ spotipy
 SpeechRecognition
 PyAudio
 sounddevice
-include portaudio.h
+#include portaudio.h
 
