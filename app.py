@@ -139,6 +139,7 @@
 
 
 # app.py
+# app.py
 
 import streamlit as st
 import speech_recognition as sr
@@ -217,9 +218,9 @@ st.markdown(
 # Retrieve API key from Streamlit secrets
 api_key = st.secrets["YOUTUBE_API_KEY"]
 
-# Capture audio input with bold label
+# Capture audio input with a label
 st.markdown("**🎤 Record a voice message**")
-audio_value = st.experimental_audio_input()
+audio_value = st.experimental_audio_input("🎤 Record a voice message")  # Added label argument
 video_id = None
 
 if audio_value:
@@ -258,7 +259,6 @@ if audio_value:
 # Play video if video ID is found
 if video_id:
     st.video(f"https://www.youtube.com/watch?v={video_id}")
-
 
 
 
