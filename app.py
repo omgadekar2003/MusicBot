@@ -136,6 +136,8 @@
 
 
 #-----
+# app.py
+
 import streamlit as st
 import speech_recognition as sr
 import requests
@@ -172,23 +174,25 @@ def get_spotify_token(client_id, client_secret):
         data={"grant_type": "client_credentials"},
         auth=HTTPBasicAuth(client_id, client_secret)
     )
-    token = response.json().get("access_token")
-    if token is None:
-        st.error("Failed to get Spotify token.")
-    return token
+    if response.status_code == 200:
+        return response.json().get("access_token")
+    else:
+        st.error("Failed to retrieve Spotify token.")
+        return None
 
 # Spotify search function
 def search_spotify_song(song_title, token):
     search_url = f"https://api.spotify.com/v1/search?q={song_title}&type=track&limit=1"
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(search_url, headers=headers).json()
-
-    if 'tracks' in response and response['tracks']['items']:
+    
+    if response.get('tracks') and response['tracks']['items']:
         track = response['tracks']['items'][0]
-        st.success(f"Found '{track['name']}' by {track['artists'][0]['name']} on Spotify!")
-        return track['preview_url']  # Returns a 30-second preview URL
-    else:
-        st.warning("Could not find the song on Spotify.")
+        return {
+            'preview_url': track['preview_url'],  # Returns a 30-second preview URL
+            'name': track['name'],
+            'artist': track['artists'][0]['name']
+        }
     return None
 
 # Capture audio input
@@ -224,10 +228,16 @@ if audio_value:
 
             # Spotify search with preview playback
             spotify_token = get_spotify_token(spotify_client_id, spotify_client_secret)
-            spotify_preview_url = search_spotify_song(song_title, spotify_token)
-            
-            if not video_id and not spotify_preview_url:
-                st.error("Could not find the song on either YouTube or Spotify.")
+            if spotify_token:
+                spotify_result = search_spotify_song(song_title, spotify_token)
+                
+                if spotify_result and spotify_result['preview_url']:
+                    spotify_preview_url = spotify_result['preview_url']
+                    st.success(f"Found '{spotify_result['name']}' by {spotify_result['artist']} on Spotify!")
+                else:
+                    st.error("Could not find the song on Spotify.")
+            else:
+                st.error("Failed to obtain Spotify access token.")
     except sr.UnknownValueError:
         st.error("Sorry, I could not understand the audio.")
     except Exception as e:
@@ -244,6 +254,7 @@ st.markdown(
     '<div class="developer-credit">Developer: OM GADEKAR</div>',
     unsafe_allow_html=True
 )
+
 
 
 #------
