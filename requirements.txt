@@ -1,16 +1,18 @@
 # reqirements.txt
-#streamlit
-#SpeechRecognition
-#requests
-#pydub
+streamlit
+SpeechRecognition
+requests
+pydub
+
+
 
 # requirements.txt
 
-streamlit
-requests
-spotipy
-SpeechRecognition
-PyAudio
-sounddevice
+#streamlit
+#requests
+#spotipy
+#SpeechRecognition
+#PyAudio
+#sounddevice
 #include portaudio.h
 
