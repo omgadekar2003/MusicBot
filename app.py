@@ -57,7 +57,7 @@ import speech_recognition as sr
 import requests
 
 # Set the page configuration
-st.set_page_config(page_title="Music Bot", page_icon="🎵", layout="centered")
+st.set_page_config(page_title="OG's Music Bot", page_icon="🎵", layout="centered")
 
 # Add a title and subtitle
 st.title("🎶 Music Bot")
