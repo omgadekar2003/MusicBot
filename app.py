@@ -220,7 +220,7 @@ api_key = st.secrets["YOUTUBE_API_KEY"]
 
 # Capture audio input with a label
 st.markdown("**🎤 Record a voice message**")
-audio_value = st.experimental_audio_input("🎤 Record a voice message")  # Added label argument
+audio_value = st.experimental_audio_input("🎤 Record")  # Added label argument
 video_id = None
 
 if audio_value:
