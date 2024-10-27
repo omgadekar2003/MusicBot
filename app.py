@@ -119,7 +119,7 @@ if audio_value:
 if video_id:
     autoplay_url = f"https://www.youtube.com/embed/{video_id}?autoplay=1"
     st.markdown(
-        f'<iframe width="560" height="315" src="{autoplay_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
+        f'<iframe width="700" height="400" src="{autoplay_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
         unsafe_allow_html=True
     )
 
